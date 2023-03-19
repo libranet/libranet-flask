@@ -11,7 +11,7 @@ api = flask.Blueprint("api", __name__)
 @api.route("/")
 def index() -> str:
     log.info("Hello homepage")
-    return "Hello Libranet."
+    return "Hello."
 
 
 @api.route("/message", methods=["GET", "POST"])
@@ -26,7 +26,6 @@ def health() -> str:
 
 @api.route("/favicon.ico")
 def favicon():
-    # return flask.send_from_directory(os.path.join(app.root_path, "static"), "favicon.ico", mimetype="image/png")
     return flask.send_from_directory("static", "favicon.png", mimetype="image/png")
 
 

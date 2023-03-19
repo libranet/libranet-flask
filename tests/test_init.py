@@ -14,4 +14,4 @@ def test_copyright():
     from demo_flask import __copyright__
 
     assert isinstance(__copyright__, str)
-    assert "EK Global" in __copyright__
+    assert "Libranet" in __copyright__

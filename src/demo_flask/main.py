@@ -1,11 +1,10 @@
 """demo_flask.main."""
 import flask
 import flask_cors
+import libranet_logging
 
 import demo_flask.cli
 import demo_flask.endpoints
-
-import libranet_logging
 
 
 def before_first_request() -> None:

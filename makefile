@@ -41,3 +41,7 @@ post-install:
 	bin/pip install -e var/src/autoread_dotenv
 	bin/pip install -e var/src/libranet_logging
 	bin/pip install -e var/src/sitecustomize-entrypoints
+
+
+.PHONY: fix  ## run fixes
+fix: black isort black

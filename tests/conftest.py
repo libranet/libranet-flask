@@ -51,7 +51,6 @@ Usage:
 """
 import pytest
 
-import demo_flask.main
 
 pytest_plugins = [
     "_helpers",
@@ -60,6 +59,7 @@ pytest_plugins = [
 
 @pytest.fixture()
 def app():
+    import demo_flask.main
 
     app = demo_flask.main.create_app()
     app.config.update(

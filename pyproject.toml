@@ -74,8 +74,9 @@ ipython_profile = "ipdb" # to be implemented, see https://github.com/gotcha/ipdb
 line_length = 120             # corresponds to -w  flag
 multi_line_output = 3         # corresponds to -m  flag
 include_trailing_comma = true # corresponds to -tc flag
-skip_glob = '^((?!py$).)*$'   # isort all Python files  # regex -> single-quotes
 known_third_party = []
+profile = "black"
+# skip_glob = '^((?!py$).)*$'   # isort all Python files  # regex -> single-quotes
 
 
 [tool.mypy]
@@ -131,12 +132,13 @@ isort = ">=5.10.1"
 pre-commit = ">=2.14.1"
 pre-commit-hooks = ">=4.1.0"
 pylint = ">=2.12.2"
-ruff = "^0.0.257"
+ruff = ">=0.0.257"
 
 [tool.poetry.group.deploy.dependencies]
-supervisor = ">=4.2.4"
 gunicorn = ">=20.1.0"
+supervisor = ">=4.2.4"
 uvicorn = ">=0.21.1"
+waitress = ">=2.1.2"
 
 [tool.poetry.group.dist.dependencies]
 pyroma = ">=4.2"
@@ -156,7 +158,8 @@ tuna = ">=0.5.11"
 [tool.poetry.group.test.dependencies]
 pytest = ">=7.0.1"
 pytest-cov = ">=3.0.0"
-pytest-freezegun = ">=0.4.2"
+# pytest-freezegun = ">=0.4.2"
+pytest-freezer = ">=0.4.6"
 pytest-mock = ">=3.10.0"
 
 [tool.poetry.group.typing.dependencies]
@@ -225,7 +228,7 @@ addopts = "--junit-xml='var/coverage/pytest.xml'"
 
 [tool.ruff]
 cache-dir = "var/cache/ruff"
-
+line-length = 120
 # [tool.twine]
 # sign = "yes"
 # distributions = "dist/wheel/"
