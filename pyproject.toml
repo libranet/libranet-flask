@@ -153,6 +153,7 @@ sphinx-rtd-theme = { version = ">=1.2.0rc3", allow-prereleases = true }
 
 [tool.poetry.group.ipython.dependencies]
 ipdb = ">=0.13.9"
+ipython = ">=8.11.0"
 
 [tool.poetry.group.profiling.dependencies]
 tuna = ">=0.5.11"
@@ -160,7 +161,7 @@ tuna = ">=0.5.11"
 [tool.poetry.group.test.dependencies]
 pytest = ">=7.0.1"
 pytest-cov = ">=3.0.0"
-# pytest-freezegun = ">=0.4.2"
+# pytest-freezegun = ">=0.4.2"  # superseded by pytest-freezer
 pytest-freezer = ">=0.4.6"
 pytest-mock = ">=3.10.0"
 
@@ -216,23 +217,21 @@ include = ["src", "tests"]
 
 
 [tool.pytest.ini_options]
+addopts = "--junit-xml='var/coverage/pytest.xml'" # the junit-report is used to report coverage in gitlab
 cache_dir = "var/cache/pytest"
+filterwarnings = [
+    # "ignore:Coverage disabled via --no-cov switch!:pytest.PytestWarning:pytest_cov.plugin",
+]
 log_cli = false # enable to show log-output
 log_cli_level = "NOTSET"
-filterwarnings = [
-    "ignore:Coverage disabled via --no-cov switch!:pytest.PytestWarning:pytest_cov.plugin",
-]
 markers = ["unit", "integration"]
 testpaths = ["tests"]
-
-# the junit-report is used to report coverage in gitlab
-addopts = "--junit-xml='var/coverage/pytest.xml'"
-
 
 [tool.ruff]
 cache-dir = "var/cache/ruff"
 line-length = 120
+
 # [tool.twine]
 # sign = "yes"
 # distributions = "dist/wheel/"
-# repository = "https://gitlab.com/api/v4/projects/37865045/packages/pypi/simple"
+# repository = "..."
