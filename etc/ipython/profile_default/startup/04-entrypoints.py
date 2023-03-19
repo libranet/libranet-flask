@@ -18,15 +18,10 @@ which is set in sitecustomize.
 """
 print(f"\nRunning {__file__}")
 
-from sitecustomize._vendor.importlib_metadata import entry_points
+import sitecustomize
 
-from sitecustomize import most_recent_unique_entries
-
-eps = entry_points(group="sitecustomize")
-
-for ep in eps:
-    print(f"{ep.name}: {ep.value}")
-
-print("\n\nOrder of execution:")
-for ep in most_recent_unique_entries(eps):
-    print(f"\t{ep.name}: {ep.value}")
+print("Unfiltered entrypoints:")
+sitecustomize.print_entrypoints(filtered=False)
+print("\n")
+print("Unfiltered entrypoints:")
+sitecustomize.print_entrypoints(filtered=True)
