@@ -1,0 +1,232 @@
+# This is a comment.
+# syntax-documentation:
+#  - https://python-poetry.org/docs/pyproject
+#  - https://flit.readthedocs.io/en/latest/pyproject_toml.html
+#
+# NOTE: you have to use single-quoted strings in TOML for regular expressions.
+# It's the equivalent of r-strings in Python.  Multiline strings are treated as
+# verbose regular expressions by Black.  Use [ ] to denote a significant space
+# character.
+#
+# - relative paths are relative to this file.
+
+[build-system]
+requires = ["poetry>=1.1", "poetry-dynamic-versioning"]
+build-backend = "poetry.masonry.api"
+
+
+[tool.bandit]
+# bandit does not use this config by default. you need to invoke
+# "bandit --configfile pyproject.toml"
+# see https://github.com/PyCQA/bandit/issues/318"
+baseline = "etc/bandit-baseline.json"
+targets = ["src"]
+recursive = true
+exclude_dirs = [".venv", "var"]
+#skips = ["*_test.py", "test_*.py"]
+#skips = ["*/test_*.py", ]
+# skips = ["test_*.py"]
+skips = ["B101"]
+
+[tool.black]
+line-length = 120
+target_version = ["py310"]
+include = '\.py$'          # regex -> single-quotes
+
+
+[tool.coverage.html]
+directory = "var/coverage/html" # relative to $CWD
+
+[tool.coverage.xml]
+output = "var/coverage/coverage.xml" # relative to $CWD
+
+
+[tool.coverage.report]
+# cfr. https://coverage.readthedocs.io/en/coverage-4.2/excluding.html
+exclude_lines = [
+    "pragma: no cover",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+]
+include = ["src/*"]
+
+[tool.coverage.run]
+branch = true
+data_file = "var/coverage/coverage.db" # defaults to .coverage
+
+
+[tool.flake8]
+max_line_length = 140
+# exclude = "bindings"
+per_file_ignores = [
+    "__init__.py:F401", # F401: imported but unused
+]
+
+
+[tool.ipdb]
+context = 5
+ipython_profile = "ipdb" # to be implemented, see https://github.com/gotcha/ipdb/issues/185
+
+
+[tool.isort]
+line_length = 120             # corresponds to -w  flag
+multi_line_output = 3         # corresponds to -m  flag
+include_trailing_comma = true # corresponds to -tc flag
+skip_glob = '^((?!py$).)*$'   # isort all Python files  # regex -> single-quotes
+known_third_party = []
+
+
+[tool.mypy]
+# cfr https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
+cache_dir = "var/cache/mypy"
+check_untyped_defs = true
+# disallow_untyped_defs = true
+exclude = '^bin/'              # regex -> single-quotes
+ignore_missing_imports = true
+mypy_path = ["./src", "tests"]
+
+
+[tool.poetry]
+name = "demo_flask"
+version = "0.0.0" # version managed by poetry-dynamic-versioning
+description = "Demo flaks-project"
+readme = "docs/readme.md"
+authors = ["Wouter Vanden Hove <wouter@libranet.eu>"]
+maintainers = ["Wouter Vanden Hove <wouter@libranet.eu>"]
+repository = "https://github.com/libranet/libranet-demo-flask"
+documentation = "https://github.com/libranet/libranet-demo-flask/"
+keywords = ["libranet", "demo", "gitlab", "docker", "flask"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: Commercial",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Typing :: Typed",
+]
+
+packages = [{ include = "demo_flask", from = "src" }]
+
+
+[tool.poetry.dependencies]
+# These packages are mandatory and form the core of this package’s distribution.
+python = ">=3.11.0,<4.0.0"
+autoread_dotenv = ">=0.0.0"
+Flask = ">=2.1.3"
+Flask-Cors = ">=3.0.10"
+Jinja2 = ">=3.1.2"
+libranet-logging = ">=0.0"
+
+[tool.poetry.group.dev.dependencies]
+bandit = { extras = ["toml"], version = ">=1.7.4" }
+black = ">=22.1.0"
+flake8 = ">=4.0.1"
+flake8-pyproject = ">=1.2.2"
+ipdb = ">=0.13.9"
+isort = ">=5.10.1"
+pre-commit = ">=2.14.1"
+pre-commit-hooks = ">=4.1.0"
+pylint = ">=2.12.2"
+ruff = "^0.0.257"
+
+[tool.poetry.group.deploy.dependencies]
+supervisor = ">=4.2.4"
+gunicorn = ">=20.1.0"
+uvicorn = ">=0.21.1"
+
+[tool.poetry.group.dist.dependencies]
+pyroma = ">=4.2"
+twine = ">=4.0.2"
+
+[tool.poetry.group.docs.dependencies]
+autoapi = ">=2.0.1"
+recommonmark = ">=0.7.1"
+Sphinx = ">=4.4.0"
+sphinx-autoapi = ">=1.8.4"
+sphinx-markdown-tables = ">=0.0.17"
+sphinx-rtd-theme = { version = ">=1.2.0rc3", allow-prereleases = true }
+
+[tool.poetry.group.profiling.dependencies]
+tuna = ">=0.5.11"
+
+[tool.poetry.group.test.dependencies]
+pytest = ">=7.0.1"
+pytest-cov = ">=3.0.0"
+pytest-freezegun = ">=0.4.2"
+pytest-mock = ">=3.10.0"
+
+[tool.poetry.group.typing.dependencies]
+mypy = ">=0.931"
+types-cachetools = ">=5.3.0.4"
+types-python-dateutil = ">=2.8.19"
+types-requests = ">=2.28.9"
+
+
+[tool.poetry.scripts]
+demo-flask = "demo_flask.cli:hello"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/libranet/libranet-demo-flask/issues"
+
+
+[tool.poetry.plugins."sitecustomize"]
+# autoread_dotenv = "autoread_dotenv.autoread:autoread_dotenv"
+yaml_add_constructor_env = "libranet_logging.yaml:add_constructor"
+
+
+[tool.poetry-dynamic-versioning]
+# cfr https://github.com/mtkennerly/poetry-dynamic-versioning
+enable = true
+vcs = "git"
+style = "semver"
+
+
+[tool.poetry-dynamic-versioning.substitution]
+files = ["src/*/__init__.py", "src/*/__version__.py", "docs/changes.rst"]
+
+
+[tool.pylint.format]
+max-line-length = 120
+good-names = [
+    "i",  # counter in loop
+    "ok", # status
+    "ts", # timestamp or timeseries object
+]
+
+[tool.pylint.messages_control]
+disable = [
+    "C0116", # missing-function-docstring
+]
+
+
+[tool.pyright]
+# VSCode will log an error if this section is missing
+# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+include = ["src", "tests"]
+
+
+[tool.pytest.ini_options]
+cache_dir = "var/cache/pytest"
+log_cli = false # enable to show log-output
+log_cli_level = "NOTSET"
+filterwarnings = [
+    "ignore:Coverage disabled via --no-cov switch!:pytest.PytestWarning:pytest_cov.plugin",
+]
+markers = ["unit", "integration"]
+testpaths = ["tests"]
+
+# the junit-report is used to report coverage in gitlab
+addopts = "--junit-xml='var/coverage/pytest.xml'"
+
+
+[tool.ruff]
+cache-dir = "var/cache/ruff"
+
+# [tool.twine]
+# sign = "yes"
+# distributions = "dist/wheel/"
+# repository = "https://gitlab.com/api/v4/projects/37865045/packages/pypi/simple"

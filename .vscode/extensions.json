@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        // sort alphabetically
+        "bungcip.better-toml",
+        "foxundermoon.shell-format",
+        "mikestead.dotenv",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode.makefile-tools",
+        "ms-vscode-remote.remote-wsl",
+        "zeshuaro.vscode-python-poetry"
+    ]
+}

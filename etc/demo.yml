@@ -1,0 +1,42 @@
+# This is a comment.
+# Please indent this yaml-file with 4 spaces, just like in python.
+# This config-file configures the logging used in python-applications.
+#
+# For more information, please see:
+#   - https://www.python.org/dev/peps/pep-0391/
+#   - https://pyyaml.org/wiki/PyYAMLDocumentation
+#   - https://docs.python.org/2.7/library/logging.config.html
+#   - http://docs.python-guide.org/en/latest/writing/logging
+#   - https://docs.python.org/3/howto/logging-cookbook.html
+#   - https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python
+#   - https://logmatic.io/blog/python-logging-with-json-steroids
+#   - https://docs.djangoproject.com/en/1.8/topics/logging/#examples
+#
+# Available default levels:
+#   -  0 NOTSET
+#   - 10 DEBUG
+#   - 20 INFO
+#   - 30 WARNING  (WARN is deprecated)
+#   - 40 ERROR
+#   - 50 CRITICAL (=FATAL)
+#
+# You can create an extra loglevel in your code via:
+#     > libranet_logging.loglevel.create_loglevel("TRACE", 5)
+#
+# Note about environment-variables:
+# You can use "!env" as a constructor to load values from an environment-variable.
+# This constructor takes 2 input-arguments:
+#   - The name of the env-variable
+#   - The default-value in case the env-var is not set.
+#     Defaults to empty string if not provided.
+#     Any quotes in default-values will be stripped.
+#     To provide an array, use ; as separator, just like setting $PATH.
+#
+# For example:
+# loggers:
+#     <name-logger>:
+#         level: !env <NAME-ENV-VARIABLE>, <DEFAULT-IF-ENV-VAR-IS-MISSING>
+
+logdir: !env LOG_DIR
+
+logdir2: $LOG_DIR

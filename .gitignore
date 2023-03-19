@@ -1,0 +1,53 @@
+# This is a comment.
+# - this .gitignore-file specifies intentionally untracked files to ignore and exclude from the git-repository.
+# - Blank lines or lines starting with # are ignored.
+# - Inline comments are not supported.
+#
+# Official documentation can be found at https://git-scm.com/docs/gitignore
+# See also:
+# - https://github.com/github/gitignore/blob/master/Python.gitignore
+# - https://raw.githubusercontent.com/pypa/sampleproject/master/.gitignore
+# - https://stackoverflow.com/questions/tagged/gitignore
+#
+# Slashes matter:
+#   - If there is a slash at the beginning or middle (or both) of the pattern,
+#     then the pattern is relative to the directory level of the particular .gitignore file itself.
+#     Otherwise the pattern may also match at any level below the .gitignore level.
+#
+#   - If there is a / at the end of the pattern then the pattern will only match directories,
+#     otherwise the pattern can match both files and directories.
+
+#   - Symlinks are always files, even if they point to a dir. So never put a slash at the end.
+
+# exclude archived files
+/_archive/
+
+# exclude dev-symlinks to .venv that make bin/python work
+/bin
+/lib
+/pyvenv.cfg
+
+# exclude actual virtual environment
+/.venv/
+
+# .env can contain secrets
+/.env
+
+# Distribution / packaging
+/dist/
+
+/etc/ipython/*/db/dhist
+
+# exlude the toplevel var
+/var/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# IPython
+# include the ipython/profile_default dir
+!/etc/ipython/
+# but exclude all files and subfolders
+/etc/ipython/*/*
+# except files in startup-subfolder
+!/etc/ipython/profile_default/startup/
