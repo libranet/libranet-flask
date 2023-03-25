@@ -19,9 +19,13 @@
 # include re-usable makefiles
 -include .make/*.mk
 
+.PHONY: pre-install  ## pre-install the virtualenv
+pre-install: create-venv
+
 
 .PHONY: install  ## full initial installation
-install: create-dirs symlink-venv-dirs dotenv-install-from-example dotenv-set-basedir dotenv-set-flask-secret-key create-venv poetry-install ipython-symlink-to-ip
+# install: create-dirs symlink-venv-dirs dotenv-install-from-example dotenv-set-basedir dotenv-set-flask-secret-key create-venv poetry-install ipython-symlink-to-ip
+install: create-dirs symlink-venv-dirs dotenv-install-from-example dotenv-set-basedir dotenv-set-flask-secret-key poetry-install ipython-symlink-to-ip
 
 
 .PHONY: create-dirs-extra  ## create extra dirs
