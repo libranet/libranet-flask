@@ -113,8 +113,7 @@ packages = [{ include = "demo_flask", from = "src" }]
 
 
 [tool.poetry.dependencies]
-# These packages are mandatory and form the core of this package’s distribution.
-python = ">=3.11.0,<4.0.0"
+python = ">=3.10.0,<4.0.0"
 autoread_dotenv = ">=0.0.0"
 Flask = ">=2.1.3"
 Flask-Cors = ">=3.0.10"
