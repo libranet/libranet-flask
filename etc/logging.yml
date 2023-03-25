@@ -65,10 +65,6 @@ formatters:
         format: "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
         datefmt: "%Y/%m/%d %H:%M:%S"
 
-    email:
-        format: "%(levelname)-7s on %(name)-s: \n\n%(message)s"
-        datefmt: "%Y/%m/%d %H:%M:%S"
-
     console_bw: # simple back & white
         format: "%(asctime)s - %(name)s - %(levelname)-7s - %(message)s"
         datefmt: "%Y/%m/%d %H:%M:%S"
@@ -86,19 +82,11 @@ formatters:
             # supported prefixes: "bold_" and "bg_"
             # <LOGLEVEL>: <foreground-color>,<background-color>
             # comma is the separator, but no extra spaces allowed
-            # DEBUG: green # bold_cyan,bg_white
-            # INFO: bold_green
-            # WARNING: bold_yellow
-            # ERROR: bold_red
-            # CRITICAL: bold_red # bold_purple
             DEBUG: cyan # bold_cyan,bg_white
             INFO: bold_green
             WARNING: yellow
             ERROR: red
             CRITICAL: purple
-
-    airflow.task:
-        format: "[%%(asctime)s] {{%%(filename)s:%%(lineno)d}} %%(levelname)s - %%(message)s"
 
     uvicorn_default: # see uvicorn/config.py
         "()": "uvicorn.logging.DefaultFormatter"
@@ -157,6 +145,12 @@ handlers:
         formatter: "generic"
         level: "DEBUG"
 
+    ipython_startupfile:
+        <<: *default
+        filename: "ipython-startup.log"
+        formatter: "generic"
+        level: "DEBUG"
+
     uvicorn_default:
         formatter: "uvicorn_default"
         class: "logging.StreamHandler"
@@ -183,6 +177,11 @@ loggers:
     blib2to3:
         level: !env LOGLEVEL_BLIB2TO3, NOTSET
 
+    demo_flask:
+        level: !env LOGLEVEL_demo_flask, NOTSET
+        handlers:
+            - demo_flask_file
+
     dotenv:
         level: !env LOGLEVEL_DOTENV, NOTSET
 
@@ -194,6 +193,13 @@ loggers:
 
     http.client:
         level: !env LOGLEVEL_HTTP_CLIENT, NOTSET
+
+    ipython-startup:
+        level: !env LOGLEVEL_IPYTHON _STARTUP, NOTSET
+        propagate: false
+        handlers:
+            - console
+            - ipython_startupfile
 
     libranet_logging:
         level: !env LOGLEVEL_LIBRANET_LOGGING, NOTSET
@@ -212,11 +218,6 @@ loggers:
 
     sh:
         level: !env LOGLEVEL_SH, NOTSET
-
-    demo_flask:
-        level: !env LOGLEVEL_demo_flask, NOTSET
-        handlers:
-            - demo_flask_file
 
     urllib3:
         level: !env LOGLEVEL_URLLIB3, NOTSET

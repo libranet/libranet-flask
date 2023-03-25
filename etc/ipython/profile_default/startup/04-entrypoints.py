@@ -22,6 +22,7 @@ import sitecustomize
 
 print("Unfiltered entrypoints:")
 sitecustomize.print_entrypoints(filtered=False)
+
 print("\n")
-print("Unfiltered entrypoints:")
+print("Filtered entrypoints:")
 sitecustomize.print_entrypoints(filtered=True)
