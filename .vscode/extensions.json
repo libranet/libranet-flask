@@ -8,6 +8,7 @@
         "ms-python.vscode-pylance",
         "ms-vscode.makefile-tools",
         "ms-vscode-remote.remote-wsl",
+        "yzhang.markdown-all-in-one",
         "zeshuaro.vscode-python-poetry"
     ]
 }

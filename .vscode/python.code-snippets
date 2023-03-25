@@ -35,7 +35,7 @@
 			"import pa",
 		],
 		"body": [
-			"import patrhlib as pl"
+			"import pathlib as pl"
 		],
 		"description": "Import pathlib."
 	},
