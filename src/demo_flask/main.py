@@ -48,7 +48,8 @@ def create_app() -> flask.Flask:
     libranet_logging.initialize()
 
     app = flask.Flask(__name__)
-    app.before_first_request(before_first_request)
+    # see https://github.com/flask-dashboard/Flask-MonitoringDashboard/commit/40530882d2298b4601e4e95e4b6a9a760be32b96
+    # app.before_first_request(before_first_request)  # deprecated
     app.before_request(before_request)
 
     register_cors(app)
@@ -56,6 +57,6 @@ def create_app() -> flask.Flask:
 
     app.logger.debug("debug from flask")
     app.logger.info("info from flask")
-    app.logger.warn("warn from flask")
+    app.logger.warning("warn from flask")
 
     return app

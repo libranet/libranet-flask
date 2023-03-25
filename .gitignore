@@ -25,6 +25,7 @@
 # exclude dev-symlinks to .venv that make bin/python work
 /bin
 /lib
+/lib64
 /pyvenv.cfg
 
 # exclude actual virtual environment

@@ -1,12 +1,11 @@
-demo_flask
-========
+libranet-demo-flask
+===================
 
 .. toctree::
     :maxdepth: 2
     :caption: About this package
 
     readme
-    requirements
     changes
     contributors
     license

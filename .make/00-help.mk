@@ -10,8 +10,6 @@ print-%: ; @echo $*=$($*)
 # switch from default /bin/sh to
 SHELL := /bin/bash
 
-# Add virtualenv to PATH, same effect as activating the virtualenv
-export PATH := $(shell pwd)/.venv/bin:$(PATH)
 
 # See https://stackoverflow.com/questions/19456518/error-when-using-sed-with-find-command-on-os-x-invalid-command-code
 # By default MacOS does not use GNU Sed, but a different less-compatible sed-implemenation that
@@ -19,6 +17,10 @@ export PATH := $(shell pwd)/.venv/bin:$(PATH)
 # You need to install GNU Sed via 'brew install gnu-sed' to make the 'gsed'-command available on $PATH.
 # In our makesfiles, use gsed if found, otherwise regular sed.
 SED=`command -v gsed || command -v sed`
+
+
+# Set default goal to not be dependent on sorting / ordering.
+.DEFAULT_GOAL := help  # defined in .make/00-help.mk
 
 
 .PHONY: help

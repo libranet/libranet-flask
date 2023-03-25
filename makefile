@@ -16,15 +16,6 @@
 #   Thus shell variables, even exported environment variables, cannot propagate upwards.
 #   Therefore better concatenate your multiline-commands with ";\" into a single line.
 
-# Set default goal to not be dependent on sorting / ordering.
-.DEFAULT_GOAL := help  # defined in .make/00-help.mk
-
-# Source .env.example, because.env might not yet exist.
--include .env.example
-
-# Source .env, if it exists. This Overrides any env-vars sourced in .env.example.
--include .env
-
 # include re-usable makefiles
 -include .make/*.mk
 
@@ -35,6 +26,7 @@ install: create-dirs symlink-venv-dirs dotenv-install-from-example dotenv-set-ba
 
 .PHONY: create-dirs-extra  ## create extra dirs
 create-dirs-extra:
+	mkdir -p var/run
 	mkdir -p var/data
 	mkdir -p var/static
 
