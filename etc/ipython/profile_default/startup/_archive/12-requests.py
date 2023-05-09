@@ -18,13 +18,7 @@ which is set in sitecustomize.
 """
 print(f"\nRunning {__file__}")
 
-import urllib3
-
 import requests
 
 url = "https://example.com"
 resp = requests.get(url, timeout=5)
-
-# http = urllib3.PoolManager()
-# resp = http.request("GET", url, timeout=3)
-breakpoint()

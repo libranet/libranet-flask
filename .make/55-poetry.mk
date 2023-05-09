@@ -1,23 +1,5 @@
 # See ../makefile
 
-.PHONY: symlink-venv-dirs ## symlinks .venv-dirs to make bin/python work
-symlink-venv-dirs:
-	ln -sf .venv/bin ;\
-	ln -sf .venv/lib ;\
-	ln -sf .venv/lib64 ;\
-	ln -sf .venv/pyvenv.cfg
-
-
-.PHONY: create-dirs ## initialize dir-structure, create dirs
-create-dirs:
-	mkdir -p var ;\
-	mkdir -p var/cache ;\
-	mkdir -p var/cache/vscode ;\
-	mkdir -p var/log ;\
-	mkdir -p var/run ;\
-	mkdir -p var/tmp
-
-
 .PHONY: create-venv ## create virtual-env with specified python-version in .env
 create-venv:
 	poetry env use ${PYTHON_VERSION}
@@ -56,6 +38,11 @@ poetry-update:
 .PHONY: poetry-build ## run poetry build to create the python-package
 poetry-build:
 	poetry build
+
+
+.PHONY: poetry-publish ## publish the package to pypi
+poetry-publish:
+	poetry publish
 
 
 .PHONY: poetry-check ## run poetry check on python-package

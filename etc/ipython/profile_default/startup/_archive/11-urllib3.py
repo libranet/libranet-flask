@@ -18,11 +18,9 @@ which is set in sitecustomize.
 """
 print(f"\nRunning {__file__}")
 
-import sitecustomize
+import urllib3
 
-print("Unfiltered entrypoints:")
-sitecustomize.print_entrypoints(filtered=False)
+url = "https://example.com"
 
-print("\n")
-print("Filtered entrypoints:")
-sitecustomize.print_entrypoints(filtered=True)
+http = urllib3.PoolManager()
+resp = http.request("GET", url, timeout=3)

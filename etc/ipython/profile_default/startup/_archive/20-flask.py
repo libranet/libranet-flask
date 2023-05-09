@@ -12,8 +12,6 @@ so you can control the execution order of files with a prefix, e.g.::
     20-bar.py
 
 return-statements are not allowed.
-We avoid executing code when debugging in ipdb by checking on env-var IS_IPYTHON
-which is set in sitecustomize.
 
 """
 print(f"\nRunning {__file__}")
