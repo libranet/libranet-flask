@@ -234,12 +234,20 @@ loggers:
         handlers:
             - console_http
 
+    httpcore:
+        level: !env LOGLEVEL_HTTPCORE, NOTSET
+           
+    httpx:
+        level: !env LOGLEVEL_HTTPX, NOTSET
+
     ipython-startup:
         level: !env LOGLEVEL_IPYTHON _STARTUP, NOTSET
         propagate: false
         handlers:
-            - console
-            - ipython_startupfile
+            # - console
+            - console_http
+            # - console_color_http
+            # - ipython_startupfile
 
     libranet_logging:
         level: !env LOGLEVEL_LIBRANET_LOGGING, NOTSET

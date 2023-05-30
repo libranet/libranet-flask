@@ -22,6 +22,7 @@ import logging
 import requests
 import textwrap
 
+
 url = "https://example.com"
 
 
@@ -64,19 +65,27 @@ handler = logging.StreamHandler()
 handler.setFormatter(formatter)
 
 
-log = logging.getLogger("httplogger")
+# log = logging.getLogger("httplogger")
+log = logging.getLogger("ipython-startup")  # name = "__main__"
 
-# log.handlers.append(handler)
+log.handlers.append(handler)
 
-def log_roundtrip(response, *args, **kwargs):
-    extra = {'req': response.request, 'res': response}
-    # breakpoint()
-    log.debug('HTTP roundtrip', extra=extra)
 
-session = requests.Session()
-session.hooks['response'].append(log_roundtrip)
+resp = requests.get('https://httpbin.org/')
 
-resp = session.get(url, timeout=5)
+
+import httpx
+httpx.get("https://www.example.com")
+
+# def log_roundtrip(response, *args, **kwargs):
+#     extra = {'req': response.request, 'res': response}
+#     # breakpoint()
+#     log.debug('HTTP roundtrip', extra=extra)
+
+# session = requests.Session()
+# session.hooks['response'].append(log_roundtrip)
+
+# resp = session.get(url, timeout=5)
 # resp = session.get(url, hooks={'response': [log_roundtrip]})
 
 

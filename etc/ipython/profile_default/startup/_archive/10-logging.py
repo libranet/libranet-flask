@@ -25,24 +25,10 @@ import libranet_logging
 # setup the logging according to etc/logging.yml
 libranet_logging.initialize()
 
-# log = logging.getLogger("ipython-startup")  # name = "__main__"
-log = logging.getLogger()  # name = "__main__"
+log = logging.getLogger("ipython-startup")  # name = "__main__"
 
 log.debug("debug-message")
 log.info("info-message")
 log.warning("warning-message")
 log.error("error-message")
 log.critical("critical-message")
-
-
-
-import logging
-import httpx
-
-# logging.basicConfig(
-#     format="%(levelname)s [%(asctime)s] %(name)s - %(message)s",
-#     datefmt="%Y-%m-%d %H:%M:%S",
-#     level=logging.DEBUG
-# )
-
-httpx.get("https://www.example.com")
