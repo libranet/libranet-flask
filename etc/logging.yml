@@ -90,13 +90,13 @@ formatters:
             CRITICAL: purple
 
     console_http: # suited for black background
-        "()": "demo_flask.formatter.HttpFormatter"
+        "()": "libranet_flask.formatter.HttpFormatter"
         datefmt: "%Y/%m/%d %H:%M:%S"
         format: "{asctime} - {name} - {levelname:<7} - {message}"
         style: "{"
 
     console_color_http: # suited for black background
-        "()": "demo_flask.formatter.ColorHttpFormatter"
+        "()": "libranet_flask.formatter.ColorHttpFormatter"
         datefmt: "%Y/%m/%d %H:%M:%S"
         format: "{log_color}{asctime} - {name} - {levelname:<7} - {message}{reset}"
         reset: True
@@ -174,7 +174,7 @@ handlers:
         filename: "40-errors.log"
         level: "ERROR"
 
-    demo_flask_file:
+    libranet_flask_file:
         <<: *default
         filename: "demo-flask.log"
         formatter: "generic"
@@ -212,10 +212,10 @@ loggers:
     blib2to3:
         level: !env LOGLEVEL_BLIB2TO3, NOTSET
 
-    demo_flask:
-        level: !env LOGLEVEL_demo_flask, NOTSET
+    libranet_flask:
+        level: !env LOGLEVEL_libranet_flask, NOTSET
         handlers:
-            - demo_flask_file
+            - libranet_flask_file
 
     dotenv:
         level: !env LOGLEVEL_DOTENV, NOTSET
@@ -236,7 +236,7 @@ loggers:
 
     httpcore:
         level: !env LOGLEVEL_HTTPCORE, NOTSET
-           
+
     httpx:
         level: !env LOGLEVEL_HTTPX, NOTSET
 

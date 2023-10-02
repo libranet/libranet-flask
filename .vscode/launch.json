@@ -34,7 +34,7 @@
             "program": "bin/gunicorn",
             "gevent": false,
             "args": [
-                "demo_flask.main:create_app()"
+                "libranet_flask.main:create_app()"
             ],
             //"args": ["main:app", "--bind=127.0.0.1:8080", "--reload", "--worker-class", "eventlet", "-w", "1", "--timeout=7200"],
             // https://stackoverflow.com/questions/39842422/how-does-one-use-the-vscode-debugger-to-debug-a-gunicorn-worker-process

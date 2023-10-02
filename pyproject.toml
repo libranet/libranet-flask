@@ -92,16 +92,16 @@ envdir = "var/cache/nox"
 
 
 [tool.poetry]
-name = "demo_flask"
+name = "libranet_flask"
 version = "0.0.0" # version managed by poetry-dynamic-versioning
 license = "MIT"
-description = "Demo flaks-project"
+description = "Demo flask-project"
 readme = "docs/readme.md"
 authors = ["Wouter Vanden Hove <wouter@libranet.eu>"]
 maintainers = ["Wouter Vanden Hove <wouter@libranet.eu>"]
 homepage = "https://github.com/libranet/autoadd_bindir"
-repository = "https://github.com/libranet/libranet-demo-flask"
-documentation = "https://github.com/libranet/libranet-demo-flask/"
+repository = "https://github.com/libranet/libranet-flask"
+documentation = "https://github.com/libranet/libranet-flask/"
 keywords = ["libranet", "demo", "gitlab", "docker", "flask"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -113,7 +113,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Typing :: Typed",
 ]
-packages = [{ include = "demo_flask", from = "src" }]
+packages = [{ include = "libranet_flask", from = "src" }]
 
 
 [tool.poetry.dependencies]
@@ -123,7 +123,6 @@ Flask = ">=2.1"
 Flask-Cors = ">=3.0"
 Jinja2 = ">=3.1.2"
 libranet-logging = ">=0.0"
-# autoadd-bindir = ">=0.0"
 httpclient-logging = ">=1.0"
 httpx = ">=0.24.0"
 
@@ -181,10 +180,10 @@ types-requests = ">=2.28"
 
 
 [tool.poetry.scripts]
-demo-flask = "demo_flask.cli:hello"
+demo-flask = "libranet_flask.cli:hello"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/libranet/libranet-demo-flask/issues"
+"Bug Tracker" = "https://github.com/libranet/libranet-flask/issues"
 
 [tool.poetry.plugins."sitecustomize"]
 yaml_add_constructor_env = "libranet_logging.yaml:add_constructor"

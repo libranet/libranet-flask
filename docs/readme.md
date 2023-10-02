@@ -1,4 +1,4 @@
-# Libranet Demo Flask
+# Libranet Flask
 
 ## Introduction
 
@@ -12,7 +12,7 @@ serving via gunicorn and managed by supervisord.
 
 ```
 cd <your-projects-dir>
-git clone https://github.com/libranet/libranet-demo-flask
+git clone https://github.com/libranet/libranet-flask
 make install
 ```
 

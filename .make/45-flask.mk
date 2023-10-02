@@ -16,7 +16,7 @@ flask-run:
 
 .PHONY: flask-run-gunicorn  ## execute bin/gunicorn
 flask-run-gunicorn:
-	bin/gunicorn demo_flask.main:create_app()
+	bin/gunicorn libranet_flask.main:create_app()
 
 
 .PHONY: flask-shell  ## execute bin/flask shell
@@ -26,4 +26,4 @@ flask-shell:
 
 .PHONY: flask-run-uvicorn  ## execute bin/uvicorn shell
 flask-run-uvicorn:
-	bin/uvicorn --factory demo_flask.main:create_app
+	bin/uvicorn --factory libranet_flask.main:create_app

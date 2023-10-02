@@ -1,10 +1,10 @@
-"""demo_flask.main."""
+"""libranet_flask.main."""
 import flask
 import flask_cors
 import libranet_logging
 
-import demo_flask.cli
-import demo_flask.endpoints
+import libranet_flask.cli
+import libranet_flask.endpoints
 
 
 def before_first_request() -> None:
@@ -30,10 +30,10 @@ def register_blueprints(app: flask.Flask) -> None:
     """register all blueprints for application"""
 
     # mount api-endpoints under /
-    app.register_blueprint(demo_flask.endpoints.api, url_prefix="/")
+    app.register_blueprint(libranet_flask.endpoints.api, url_prefix="/")
 
     # register cli-commands
-    app.register_blueprint(demo_flask.cli.demo)
+    app.register_blueprint(libranet_flask.cli.demo)
 
 
 def register_cors(app: flask.Flask) -> None:

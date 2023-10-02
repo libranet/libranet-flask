@@ -15,7 +15,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "src/demo_flask/__init__.py": {
+    "src/libranet_flask/__init__.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -28,7 +28,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "src/demo_flask/hello.py": {
+    "src/libranet_flask/hello.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -41,7 +41,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "src/demo_flask/utils/__init__.py": {
+    "src/libranet_flask/utils/__init__.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,

@@ -37,11 +37,6 @@ create-dirs-extra:
 
 .PHONY: post-install  ## post-install steps
 post-install:
-	bin/pip install -e var/src/autoadd-bindir
-	bin/pip install -e var/src/autoread-dotenv
-	bin/pip install -e var/src/httpclient-logging
-	bin/pip install -e var/src/libranet-logging
-	bin/pip install -e var/src/sitecustomize-entrypoints
 
 
 .PHONY: fix  ## run fixes

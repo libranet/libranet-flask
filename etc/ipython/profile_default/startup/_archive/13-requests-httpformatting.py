@@ -26,7 +26,7 @@ import textwrap
 url = "https://example.com"
 
 
-# from demo_flask.formatter import HttpFormatter
+# from libranet_flask.formatter import HttpFormatter
 
 class HttpFormatter(logging.Formatter):
 

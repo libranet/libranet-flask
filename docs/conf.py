@@ -55,7 +55,7 @@ def read_version(*names: str) -> str:
 
 current_year = dt.datetime.now().year
 project_prefix = ""
-name = "demo_flask"
+name = "libranet_flask"
 
 autoclass_content = "both"
 
@@ -91,7 +91,7 @@ extensions = [
 autodoc_typehints = "description"
 autoapi_type = "python"
 autoapi_dirs = [
-    "../src/demo_flask",
+    "../src/libranet_flask",
 ]
 autoapi_root = "modules"
 autoapi_generate_api_docs = True
@@ -121,7 +121,7 @@ copyright = f"{current_year}, EK Global"  # pylint: disable=redefined-builtin
 
 # The short X.Y version.
 # version = '0.1'
-version = read_version("../src/demo_flask/__init__.py")
+version = read_version("../src/libranet_flask/__init__.py")
 
 # The full version, including alpha/beta/rc tags.
 release = version

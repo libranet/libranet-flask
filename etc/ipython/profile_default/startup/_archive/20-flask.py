@@ -20,10 +20,10 @@ import sys
 import flask
 from flask import g
 
-import demo_flask.main
+import libranet_flask.main
 
 # instantiate the flask-app
-app = demo_flask.main.create_app()
+app = libranet_flask.main.create_app()
 
 # The app context contains application-specific information.
 # An app context is created and pushed at the beginning of each request

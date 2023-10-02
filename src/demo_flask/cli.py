@@ -1,4 +1,4 @@
-"""demo_flask.cli.
+"""libranet_flask.cli.
 
 Docs: https://flask.palletsprojects.com/en/2.2.x/cli/
 """

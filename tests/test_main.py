@@ -1,5 +1,5 @@
 # pylint: disable=import-outside-toplevel
-"""Tests for demo_flask.main."""
+"""Tests for libranet_flask.main."""
 
 
 def test_main():

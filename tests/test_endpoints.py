@@ -1,5 +1,5 @@
 # pylint: disable=import-outside-toplevel
-"""Tests for demo_flask.endpoints."""
+"""Tests for libranet_flask.endpoints."""
 
 
 def test_endpoint_index(client):

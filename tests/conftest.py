@@ -46,7 +46,7 @@ Usage:
   > pytest -v -m "not integration"
 
   # generate coverage in the terminal + in html-report
-  > pytest --cov="demo_flask"  --cov-report=term  --cov-report=html
+  > pytest --cov="libranet_flask"  --cov-report=term  --cov-report=html
 
 """
 import pytest
@@ -59,9 +59,9 @@ pytest_plugins = [
 
 @pytest.fixture()
 def app():
-    import demo_flask.main
+    import libranet_flask.main
 
-    app = demo_flask.main.create_app()
+    app = libranet_flask.main.create_app()
     app.config.update(
         {
             "TESTING": True,

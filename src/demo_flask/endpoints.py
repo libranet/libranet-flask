@@ -1,4 +1,4 @@
-"""demo_flask.endpoints."""
+"""libranet_flask.endpoints."""
 import logging
 import typing as tp
 

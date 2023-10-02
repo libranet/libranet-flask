@@ -1,4 +1,4 @@
-"""demo_flask.formatter."""
+"""libranet_flask.formatter."""
 
 import logging
 import textwrap
@@ -38,7 +38,7 @@ class HttpFormatter(logging.Formatter):
             )
 
             record.message = message_extra
-        else: 
+        else:
             # breakpoint()
             pass
         result = super().formatMessage(record)

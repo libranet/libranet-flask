@@ -1,5 +1,5 @@
-libranet-demo-flask
-===================
+libranet-flask
+==============
 
 .. toctree::
     :maxdepth: 2
@@ -14,7 +14,7 @@ libranet-demo-flask
     :maxdepth: 2
     :caption: Modules
 
-    modules/demo_flask/index.rst
+    modules/libranet_flask/index.rst
 
 
 Indices and tables
