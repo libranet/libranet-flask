@@ -19,6 +19,13 @@
 # include re-usable makefiles
 -include .make/*.mk
 
+.PHONY: clean  ## pre-install the virtualenv
+clean: 
+	- rm -fr bin lib lib64 pyvenv.cfg
+	- rm -fr .venv
+	- rm -fr var
+
+
 .PHONY: pre-install  ## pre-install the virtualenv
 pre-install: create-venv
 
