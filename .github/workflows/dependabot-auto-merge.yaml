@@ -8,11 +8,7 @@ jobs:
   auto-merge:
     runs-on: ubuntu-latest
     steps:
-<<<<<<< HEAD
-      - uses: actions/checkout@v3
-=======
       - uses: actions/checkout@v4
->>>>>>> 5a84c39 (update)
       - uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
           target: minor
