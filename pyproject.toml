@@ -27,9 +27,9 @@ skips = ["B101"]
 
 
 [tool.black]
-include = '\.py$'          # regex -> single-quotes
+include = '\.py$'  # regex -> single-quotes
 line-length = 120
-target_version = ["py310"]
+target-version = ["py312"]
 
 
 [tool.coverage.html]
@@ -122,23 +122,14 @@ packages = [{ include = "libranet_flask", from = "src" }]
 [tool.poetry.dependencies]
 python = ">=3.10.0,<4.0"
 autoread-dotenv = ">=0.0"
-Flask = ">=2.1"
-Flask-Cors = ">=3.0"
-Jinja2 = ">=3.1.2"
+flask = ">=2.1"
+flask-cors = ">=3.0"
+jinja2 = ">=3.1.2"
 libranet-logging = ">=0.0"
 httpclient-logging = ">=1.0"
 httpx = ">=0.24.0"
 
-[tool.poetry.group.dev.dependencies]
-bandit = { extras = ["toml"], version = ">=1.7" }
-black = ">=22.1"
-flake8 = ">=4.0"
-flake8-pyproject = ">=1.2"
-isort = ">=5.10"
-pre-commit = ">=2.14"
-pre-commit-hooks = ">=4.1"
-pylint = ">=2.12"
-ruff = ">=0.0"
+
 
 [tool.poetry.group.deploy.dependencies]
 gunicorn = ">=20.1"
@@ -162,9 +153,22 @@ sphinx-rtd-theme = { version = ">=1.2.0rc3", allow-prereleases = true }
 ipdb = ">=0.13"
 ipython = ">=8.11"
 
+[tool.poetry.group.lint.dependencies]
+black = ">=22.1"
+flake8 = ">=4.0"
+flake8-pyproject = ">=1.2"
+isort = ">=5.10"
+pre-commit = ">=2.14"
+pre-commit-hooks = ">=4.1"
+pylint = ">=2.12"
+ruff = ">=0.0"
+
 [tool.poetry.group.profiling.dependencies]
 importtime-waterfall = ">=1.0"
 tuna = ">=0.5"
+
+[tool.poetry.group.security.dependencies]
+bandit = { extras = ["toml"], version = ">=1.7" }
 
 [tool.poetry.group.testing.dependencies]
 coverage = ">=7.2"
