@@ -1346,14 +1346,14 @@ type = ["pygobject-stubs", "pytest-mypy", "shtab", "types-pywin32"]
 
 [[package]]
 name = "libranet-logging"
-version = "1.4"
+version = "1.5"
 description = "Easy-to-use logging-configuration using a logging.yml-file"
 optional = false
 python-versions = ">=3.8.0"
 groups = ["main"]
 files = [
-    {file = "libranet_logging-1.4-py3-none-any.whl", hash = "sha256:5220a7d37ff58f7b62cfa52dbe008cfc659d15e5fd5e17ae762bff1c0fd0fcf1"},
-    {file = "libranet_logging-1.4.tar.gz", hash = "sha256:3aa6aa822284249c9161fe787646ba7a4bfe7d60ad1eeff9d5aa5f0a7ef71a8b"},
+    {file = "libranet_logging-1.5-py3-none-any.whl", hash = "sha256:ebba98e4ae7a66775554f5772b1973b65e1c226d7e99750ec6449644e46fca81"},
+    {file = "libranet_logging-1.5.tar.gz", hash = "sha256:1e9a944094a9e60671aaf6375d8544fc29c8f9e58db336f3d7564baa6f8b5dd2"},
 ]
 
 [package.dependencies]
