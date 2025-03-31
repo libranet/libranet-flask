@@ -1050,6 +1050,27 @@ test = ["flufl.flake8", "importlib-resources (>=1.3) ; python_version < \"3.9\""
 type = ["pytest-mypy"]
 
 [[package]]
+name = "importlib-resources"
+version = "6.5.2"
+description = "Read resources from Python packages"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+markers = "python_version < \"3.11\""
+files = [
+    {file = "importlib_resources-6.5.2-py3-none-any.whl", hash = "sha256:789cfdc3ed28c78b67a06acb8126751ced69a3d5f79c095a98298cd8a760ccec"},
+    {file = "importlib_resources-6.5.2.tar.gz", hash = "sha256:185f87adef5bcc288449d98fb4fba07cea78bc036455dd44c5fc4a2fe78fed2c"},
+]
+
+[package.extras]
+check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1) ; sys_platform != \"cygwin\""]
+cover = ["pytest-cov"]
+doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
+enabler = ["pytest-enabler (>=2.2)"]
+test = ["jaraco.test (>=5.4)", "pytest (>=6,!=8.1.*)", "zipp (>=3.17)"]
+type = ["pytest-mypy"]
+
+[[package]]
 name = "importtime-waterfall"
 version = "1.0.0"
 description = "Generate waterfalls from `-Ximporttime` tracing."
@@ -1397,18 +1418,19 @@ type = ["pygobject-stubs", "pytest-mypy", "shtab", "types-pywin32"]
 
 [[package]]
 name = "libranet-logging"
-version = "1.4"
+version = "1.5.2"
 description = "Easy-to-use logging-configuration using a logging.yml-file"
 optional = false
-python-versions = ">=3.8.0"
+python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "libranet_logging-1.4-py3-none-any.whl", hash = "sha256:5220a7d37ff58f7b62cfa52dbe008cfc659d15e5fd5e17ae762bff1c0fd0fcf1"},
-    {file = "libranet_logging-1.4.tar.gz", hash = "sha256:3aa6aa822284249c9161fe787646ba7a4bfe7d60ad1eeff9d5aa5f0a7ef71a8b"},
+    {file = "libranet_logging-1.5.2-py3-none-any.whl", hash = "sha256:73138011d2943dc21309d785321d22a4bd77e93d68a313c296082e10a98a4741"},
+    {file = "libranet_logging-1.5.2.tar.gz", hash = "sha256:7eebf7cd71d23edda14793ca7baf79732c952965ea5f5413d222dfc1850a10e0"},
 ]
 
 [package.dependencies]
 colorlog = ">=6.7"
+importlib-resources = {version = ">=6.4.5", markers = "python_full_version < \"3.11.0\""}
 jsonschema = ">=4.23"
 logging-tree = ">=1.9"
 pyyaml = ">=6.0"
