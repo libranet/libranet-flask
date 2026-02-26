@@ -1,7 +1,7 @@
 # This is a comment.
-# - this .gitignore-file specifies intentionally untracked files to ignore and exclude from the git-repository.
-# - Blank lines or lines starting with # are ignored.
-# - Inline comments are not supported.
+# Blank lines or lines starting with # are ignored.
+# Inline comments are not supported.
+# This file contains a list of files to exclude from the git-repository.
 #
 # Official documentation can be found at https://git-scm.com/docs/gitignore
 # See also:
@@ -16,34 +16,40 @@
 #
 #   - If there is a / at the end of the pattern then the pattern will only match directories,
 #     otherwise the pattern can match both files and directories.
+#
+#   - Symlinks are always files, even if they point to a dir. So never put a / at the end.
 
-#   - Symlinks are always files, even if they point to a dir. So never put a slash at the end.
 
-# exclude archived files
-/_archive/
-
-# exclude toplevel dev-symlinks to .venv that make bin/python work
+# dev-symlinks to .venv to make bin/python work
 /bin
 /lib
 /lib64
 /pyvenv.cfg
 
-# exclude actual virtual environment
-/.venv/
+# exclude virtual-environment and variations
+/.venv*
 
-# .env can contain secrets
-/.env
-
-# Distribution / packaging
+# distribution / packaging
 /dist/
+
+/.cookiecutter.json
+
+# exclude .env-files can contain secrets
+/.env*
+# but include the template (ordering matters here)
+!/.env.template*
+
+# exclude generated python-cache-files
+__pycache__/
+
+# exclude toplevel var-dir
+/var
+
+
+
 
 /etc/ipython/*/db/dhist
 
-# exlude the toplevel var
-/var/
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
 
 # IPython
 # include the ipython/profile_default dir

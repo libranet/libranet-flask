@@ -28,12 +28,13 @@ def before_request() -> None:
 
 def register_blueprints(app: flask.Flask) -> None:
     """register all blueprints for application"""
+    import libranet_flask.cli.flask
 
     # mount api-endpoints under /
     app.register_blueprint(libranet_flask.endpoints.api, url_prefix="/")
 
     # register cli-commands
-    app.register_blueprint(libranet_flask.cli.demo)
+    app.register_blueprint(libranet_flask.cli.flask.demo)
 
 
 def register_cors(app: flask.Flask) -> None:

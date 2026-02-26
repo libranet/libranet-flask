@@ -1,3 +1,13 @@
-"""libranet_flask.__init__."""
-__version__ = "0.0.0"
-__copyright__ = "Copyright 2023 Libranet - MIT License."
+"""libranet_flask."""
+
+from libranet_flask.about import (
+    authors as __author__,
+    license_ as __license__,
+    version as __version__,
+)
+
+__all__: list[str] = [
+    "__author__",
+    "__license__",
+    "__version__",
+]
