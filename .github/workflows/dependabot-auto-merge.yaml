@@ -23,7 +23,9 @@ jobs:
     timeout-minutes: 5
 
     # Only run for Dependabot PRs - security: prevent running on PRs from forks or other actors
-    if: github.actor == 'dependabot[bot]'
+    # Use pull_request.user.login (PR author) instead of actor, so auto-merge still works
+    # when a human manually updates the branch with `gh pr update-branch`.
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
 
     steps:
 
