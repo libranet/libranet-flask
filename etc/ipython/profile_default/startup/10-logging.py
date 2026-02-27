@@ -18,15 +18,9 @@ return-statements are not allowed.
 print(f"Importing {__file__}")
 
 # already import highly used modules
-import datetime as dt
 import logging
-import os
-import pathlib as pl
-import sys
-import typing as tp
 
 import libranet_logging
-
 
 # setup the logging according to etc/logging.yml
 libranet_logging.initialize()

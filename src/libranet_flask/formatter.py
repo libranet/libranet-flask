@@ -2,6 +2,7 @@
 
 import logging
 import textwrap
+from typing import Any, cast
 
 from colorlog import ColoredFormatter
 
@@ -9,13 +10,15 @@ from colorlog import ColoredFormatter
 class HttpFormatter(logging.Formatter):
     """HTTP-Formatter."""
 
-    def format_headers(self, d):
-        return '\n'.join(f'{k}: {v}' for k, v in d.items())
+    def format_headers(self, d: dict) -> str:
+        """Format HTTP headers as a string."""
+        return "\n".join(f"{k}: {v}" for k, v in d.items())
 
-    def formatMessage(self, record):
-        # result = super().formatMessage(record)
-
-        if hasattr(record, "req"):
+    def formatMessage(self, record: logging.LogRecord) -> str:  # noqa: N802
+        """Format the log message with HTTP request/response details."""
+        if hasattr(record, "req") and hasattr(record, "res"):
+            req = cast("Any", record.req)
+            res = cast("Any", record.res)
             message_extra = record.message
             message_extra += textwrap.dedent("""
                 ---------------- request ----------------
@@ -31,19 +34,18 @@ class HttpFormatter(logging.Formatter):
 
                 {resp.text}
             """).format(
-                req=record.req ,
-                resp=record.res,
-                req_headers=self.format_headers(record.req.headers),
-                resp_headers=self.format_headers(record.res.headers),
+                req=req,
+                resp=res,
+                req_headers=self.format_headers(req.headers),
+                resp_headers=self.format_headers(res.headers),
             )
 
             record.message = message_extra
         else:
             # breakpoint()
             pass
-        result = super().formatMessage(record)
-        return result
+        return super().formatMessage(record)
 
 
-class ColorHttpFormatter(HttpFormatter,ColoredFormatter):
+class ColorHttpFormatter(HttpFormatter, ColoredFormatter):
     """Colorized HTTP-Formatter."""

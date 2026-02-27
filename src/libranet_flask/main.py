@@ -1,10 +1,8 @@
 """libranet_flask.main."""
+
 import flask
 import flask_cors
 import libranet_logging
-
-import libranet_flask.cli
-import libranet_flask.endpoints
 
 
 def before_first_request() -> None:
@@ -13,7 +11,6 @@ def before_first_request() -> None:
     Use instantiated app via
         >>> app = flask.current_app
     """
-    pass  # noqa
 
 
 def before_request() -> None:
@@ -23,12 +20,12 @@ def before_request() -> None:
     >>> app = flask.current_app
 
     """
-    pass  # noqa
 
 
 def register_blueprints(app: flask.Flask) -> None:
-    """register all blueprints for application"""
-    import libranet_flask.cli.flask
+    """Register all blueprints for application."""
+    import libranet_flask.cli.flask  # noqa: PLC0415
+    import libranet_flask.endpoints  # noqa: PLC0415
 
     # mount api-endpoints under /
     app.register_blueprint(libranet_flask.endpoints.api, url_prefix="/")
@@ -38,7 +35,7 @@ def register_blueprints(app: flask.Flask) -> None:
 
 
 def register_cors(app: flask.Flask) -> None:
-    """register cors-extension."""
+    """Register cors-extension."""
     cors = flask_cors.CORS()
     resources = {"*": {"origins": "*"}}
     cors.init_app(app, resources=resources)

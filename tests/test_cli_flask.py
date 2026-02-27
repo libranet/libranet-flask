@@ -1,5 +1,5 @@
 # pylint: disable=import-outside-toplevel
-"""Tests for libranet_flask.cli.flask"""
+"""Tests for libranet_flask.cli.flask."""
 
 
 def test_hello_command(runner):

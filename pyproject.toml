@@ -138,17 +138,16 @@ deployment = [
     "waitress>=3.0.2",
 ]
 docs = [
-    "autoapi>=2.0",
-    # "furo>=2021.11",
+    "docutils!=0.21",  # Work-around for https://github.com/pypi/warehouse/issues/15749
     "markupsafe>=2.1",
-    "myst-parser>=1.0",
-    "pdoc>=13.0",
-    "recommonmark>=0.7",
-    "Sphinx>=4.4",
-    "sphinx-autoapi>=1.8",
-    # "sphinx-autobuild>=2021.3",
-    # "sphinx-click>=3.0",
-    "sphinx-rtd-theme>=1.0",
+    "mdformat>=0.7",
+    "mdformat-gfm>=0.3",
+    "mdformat-frontmatter>=2.0",
+    "mdformat-tables>=1.0",
+    "myst-parser>=3.0",
+    "sphinx>=7.1",
+    "sphinx-autoapi>=3.3",
+    "sphinx-rtd-theme>=3.0",
 ]
 ipython = [
     "ipdb>=0.13",
@@ -287,6 +286,9 @@ known-first-party = ["libranet_flask"]
 known-local-folder = ["_helpers"]
 
 [tool.ruff.lint.per-file-ignores]
+"docs/**" = [
+    "INP001",  # docs-dir should not be a python-package
+    ]
 "etc/**" = [
     "ANN001",  # missing type annotation
     "D103",    # missing docstring in public function
@@ -294,7 +296,7 @@ known-local-folder = ["_helpers"]
     "PLC0415", # 'import' should be at top-level of file
     ]
 "tests/**" = [
-    "ANN001",  # missing type annotation
+    "ANN",     # missing type annotation
     "D103",    # missing docstring in public function
     "INP001",  # tests-dir should not be a python-package
     "PLC0415", # 'import' should be at top-level of file

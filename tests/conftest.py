@@ -22,13 +22,12 @@ you will not be able to run pytest, instead it will fail with:
 
 import pytest
 
-
 pytest_plugins = [
     "_helpers",
 ]
 
 
-@pytest.fixture()
+@pytest.fixture
 def app():
     import libranet_flask.main
 
@@ -41,16 +40,16 @@ def app():
 
     # other setup can go here
 
-    yield app
+    return app
 
     # clean up / reset resources here
 
 
-@pytest.fixture()
+@pytest.fixture
 def client(app):
     return app.test_client()
 
 
-@pytest.fixture()
+@pytest.fixture
 def runner(app):
     return app.test_cli_runner()

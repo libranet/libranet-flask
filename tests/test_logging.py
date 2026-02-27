@@ -2,7 +2,6 @@
 
 import logging as std_logging
 
-import libranet_flask
 from libranet_flask import logging
 
 

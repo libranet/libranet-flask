@@ -11,11 +11,11 @@ def test_get_settings(monkeypatch: pytest.MonkeyPatch) -> None:
     from libranet_flask.cfg import get_settings
 
     monkeypatch.setenv("PROJECT_NAME", "custom-project")
-    monkeypatch.setenv("BASE_DIR", "/tmp/test-base-dir")
+    monkeypatch.setenv("BASE_DIR", "/tmp/test-base-dir")  # noqa: S108
     monkeypatch.setenv("TMPDIR", "/custom/tmp")
 
     settings = get_settings()
 
     assert settings.project_name == "custom-project"
-    assert settings.base_dir == pl.Path("/tmp/test-base-dir")
+    assert settings.base_dir == pl.Path("/tmp/test-base-dir")  # noqa: S108
     assert settings.tmpdir == pl.Path("/custom/tmp")
