@@ -31,6 +31,10 @@ env:
     # https://github.com/actions/runner/issues/241
     PY_COLORS: 1
 
+    # Pin just version for reproducible builds
+    # https://github.com/casey/just/releases
+    JUST_VERSION: "1.46.0"  # released on 2026-01-02
+
     # Pin uv version for reproducible builds
     # https://github.com/astral-sh/uv/releases
     UV_VERSION: "0.9.26"  # released on 2026-01-15
@@ -72,6 +76,13 @@ jobs:
           run: |
               sudo rm -f /usr/lib/python3.*/sitecustomize.py
               sudo rm -f /etc/python3.*/sitecustomize.py
+
+        # repo: https://github.com/extractions/setup-just
+        # releases: https://github.com/extractions/setup-just/releases
+        - name: Install pinned version of just
+          uses: extractions/setup-just@e33e0265a09d6d736e2ee1e0eb685ef1de4669ff  # v3 released on 2025-03-15
+          with:
+              just-version: ${{ env.JUST_VERSION }}
 
         # repo: https://github.com/astral-sh/setup-uv
         # releases: https://github.com/astral-sh/setup-uv/tags
