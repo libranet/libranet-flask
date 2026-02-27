@@ -14,10 +14,10 @@ so you can control the execution order of files with a prefix, e.g.::
 return-statements are not allowed.
 
 """
+
 print(f"\nRunning {__file__}")
 
-import sys
-import flask
+
 from flask import g
 
 import libranet_flask.main

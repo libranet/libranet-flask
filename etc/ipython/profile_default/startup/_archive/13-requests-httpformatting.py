@@ -16,24 +16,29 @@ We avoid executing code when debugging in ipdb by checking on env-var IS_IPYTHON
 which is set in sitecustomize.
 
 """
+
 print(f"\nRunning {__file__}")
 
 import logging
-import requests
 import textwrap
 
+import requests
 
 url = "https://example.com"
 
 
 # from libranet_flask.formatter import HttpFormatter
 
+
 class HttpFormatter(logging.Formatter):
+    """HTTP request/response formatter for logging."""
 
-    def format_headers(self, d):
-        return '\n'.join(f'{k}: {v}' for k, v in d.items())
+    def format_headers(self, d) -> str:
+        """Format HTTP headers as a string."""
+        return "\n".join(f"{k}: {v}" for k, v in d.items())
 
-    def formatMessage(self, record):
+    def formatMessage(self, record) -> str:  # noqa: N802
+        """Format log message with HTTP request/response details."""
         result = super().formatMessage(record)
         # if record.name == 'http.client':
 
@@ -57,10 +62,11 @@ class HttpFormatter(logging.Formatter):
             resp_headers=self.format_headers(record.res.headers),
         )
 
+
 #         return result
 
 
-formatter = HttpFormatter('{asctime} {levelname} {name} {message}', style='{')
+formatter = HttpFormatter("{asctime} {levelname} {name} {message}", style="{")
 handler = logging.StreamHandler()
 handler.setFormatter(formatter)
 
@@ -71,10 +77,11 @@ log = logging.getLogger("ipython-startup")  # name = "__main__"
 log.handlers.append(handler)
 
 
-resp = requests.get('https://httpbin.org/')
+resp = requests.get("https://httpbin.org/", timeout=10)
 
 
 import httpx
+
 httpx.get("https://www.example.com")
 
 # def log_roundtrip(response, *args, **kwargs):
@@ -89,7 +96,6 @@ httpx.get("https://www.example.com")
 # resp = session.get(url, hooks={'response': [log_roundtrip]})
 
 
-
 # def print_url(r, *args, **kwargs):
 #     print(r.url)
 
@@ -101,5 +107,3 @@ httpx.get("https://www.example.com")
 
 # requests.get('https://httpbin.org/', hooks={'response': print_url})
 # r = requests.get('https://httpbin.org/', hooks={'response': [print_url, log_roundtrip, record_hook]})
-
-

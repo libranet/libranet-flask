@@ -10,5 +10,6 @@
 # These owners will be the default owners for everything in
 # the repo. Unless a later match takes precedence,
 # These will be requested for review when someone opens a pull request.
-# *       @WouterVH  # via github-username
-*       wouter@libranet.eu  # via email assocciated with a  github-username
+
+# * libranet  # via github-username
+* wouter@libranet.eu  # via email assocciated with a github-username

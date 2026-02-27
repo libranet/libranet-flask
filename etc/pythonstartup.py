@@ -1,14 +1,16 @@
-# Taken from https://gist.github.com/viliampucik/8713b09ff7e4d984b29bfcd7804dc1f4
-#
-# Store interactive Python shell history in ~/.cache/python_history
-# instead of ~/.python_history.
-#
-# Create the following ~/.config/pythonstartup.py file
-# and export its path using PYTHONSTARTUP environment variable:
-#
-# export PYTHONSTARTUP="${HOME}/.config/pythonstartup.py"
-#
-# this file is executed *after* sitecustomize.
+"""Python startup file.
+
+Taken from https://gist.github.com/viliampucik/8713b09ff7e4d984b29bfcd7804dc1f4
+Store interactive Python shell history in ~/.cache/python_history instead of ~/.python_history.
+
+Create the following ~/.config/pythonstartup.py file
+and export its path using PYTHONSTARTUP environment variable:
+
+  $ export PYTHONSTARTUP="${HOME}/.config/pythonstartup.py"
+
+This file is executed *after* sitecustomize.
+
+"""
 
 import atexit
 import pathlib as pl
@@ -33,8 +35,6 @@ except FileNotFoundError:
 
 atexit.register(readline.write_history_file, histfile)
 
-print("PYTHONSTARTUP")
-
 # cleanup namespace
 del atexit
 del readline
@@ -45,3 +45,5 @@ del histfile
 del local_cache_dir
 del local_cache_dir_python
 del prefix
+
+# print("PYTHONSTARTUP")

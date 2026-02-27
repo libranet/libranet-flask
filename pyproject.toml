@@ -1,43 +1,51 @@
-# This is a comment.
-# syntax-documentation:
-#  - https://python-poetry.org/docs/pyproject
-#  - https://flit.readthedocs.io/en/latest/pyproject_toml.html
+# This pyproject.toml is the config-file for this workspace and its development-tools.
 #
-# NOTE: you have to use single-quoted strings in TOML for regular expressions.
-# It's the equivalent of r-strings in Python.  Multiline strings are treated as
-# verbose regular expressions by Black.  Use [ ] to denote a significant space
-# character.
+# Official documentation:
+#  - https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 #
-# - relative paths are relative to this file.
+# Notes:
+#  - Sort toplevel keys alphabetically.
+#  - As a general rule, sort keys within tables alphabetically.
+#  - Always sort dependencies alphabetically.
+#  - Separate top-level sections by a two blank lines.
+#  - Separate sub-sections by a single blank line.
+#  - Use single-quoted strings in TOML for regular expressions.
+#    It's the equivalent of r-strings in Python. Multiline strings are treated as
+#    verbose regular expressions by Black. Use [ ] to denote a significant space character.
 
+
+# https://docs.astral.sh/uv/concepts/projects/config/#build-systems
 [build-system]
-requires = ["poetry>=1.1", "poetry-dynamic-versioning"]
-build-backend = "poetry.masonry.api"
+requires = ["uv_build>=0.9"]
+build-backend = "uv_build"
 
 
 [tool.bandit]
-# bandit does not use this config by default. you need to invoke
-# "bandit --configfile pyproject.toml"
+# https://bandit.readthedocs.io/en/latest/config.html
+# bandit does not use this config by default.
+# You need to invoke "bandit --configfile pyproject.toml"
 # see https://github.com/PyCQA/bandit/issues/318"
 baseline = "etc/bandit-baseline.json"
-targets = ["src"]
-recursive = true
 exclude_dirs = [".venv", "var"]
-skips = ["B101"]
-
-
-[tool.black]
-include = '\.py$'  # regex -> single-quotes
-line-length = 120
-target-version = ["py312"]
+recursive = true
+targets = ["src", "tests"]
+# skips = [
+#     "B101", # assert used
+#     ]
+[tool.bandit.assert_used]
+skips = ["tests/*"]
 
 
 [tool.coverage.html]
+# https://coverage.readthedocs.io/en/latest/config.html
 directory = "var/coverage/html"
 
 [tool.coverage.xml]
 output = "var/coverage/coverage.xml"
 
+# [tool.coverage.paths]
+# source = ["src", "*/site-packages"]
+# tests = ["tests", "*/tests"]
 
 [tool.coverage.report]
 # cfr. https://coverage.readthedocs.io/en/coverage-4.2/excluding.html
@@ -48,171 +56,180 @@ exclude_lines = [
     "if 0:",
     "if __name__ == .__main__.:",
 ]
+# fail_under = 100
 include = ["src/*"]
+# omit = ["*tests*"]
+# show_missing = true
 
 [tool.coverage.run]
 branch = true
-data_file = "var/coverage/coverage.db" # defaults to .coverage
-
-
-[tool.flake8]
-max_line_length = 140
-# exclude = "bindings"
-per_file_ignores = [
-    "__init__.py:F401", # F401: imported but unused
-]
-
-
-[tool.ipdb]
-context = 5
-ipython_profile = "ipdb" # to be implemented, see https://github.com/gotcha/ipdb/issues/185
-
-
-[tool.isort]
-line_length = 120             # corresponds to -w  flag
-multi_line_output = 3         # corresponds to -m  flag
-include_trailing_comma = true # corresponds to -tc flag
-known_third_party = []
-profile = "black"
-# skip_glob = '^((?!py$).)*$'   # isort all Python files  # regex -> single-quotes
+data_file = "var/coverage/coverage.db"
+source = ["libranet_flask", "tests"]
 
 
 [tool.mypy]
-# cfr https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
-cache_dir = "var/cache/mypy"
+# cfr. https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
+cache_dir = "${MYPY_CONFIG_FILE_DIR}/var/cache/mypy"
 check_untyped_defs = true
-# disallow_untyped_defs = true
-exclude = '^bin/'              # regex -> single-quotes
+exclude = '^bin/'  # regex -> single-quotes
 ignore_missing_imports = true
-mypy_path = ["./src", "tests"]
+mypy_path = ["src"]
+# pretty = true
+# show_column_numbers = true
+# show_error_codes = true
+# show_error_context = true
+# strict = true
+# warn_unreachable = true
 
 
-[tool.nox]
-envdir = "var/cache/nox"
+[tool.mutmut]
+# cfr. https://mutmut.readthedocs.io/en/latest/#configuration
+paths_to_mutate = [ "src/" ]
+pytest_add_cli_args_test_selection= [ "tests/" ]
 
 
-[tool.poetry]
-name = "libranet_flask"
-version = "0.0.0" # version managed by poetry-dynamic-versioning
-license = "MIT"
+[project]
+name = "libranet-flask"
+version = "0.1dev0"
+license = { file = "license.md" }
 description = "Demo flask-project"
 readme = "docs/readme.md"
-authors = ["Wouter Vanden Hove <wouter@libranet.eu>"]
-maintainers = ["Wouter Vanden Hove <wouter@libranet.eu>"]
-homepage = "https://github.com/libranet/autoadd_bindir"
-repository = "https://github.com/libranet/libranet-flask"
-documentation = "https://github.com/libranet/libranet-flask/"
+requires-python = ">=3.13"
+authors = [{ name = "Wouter Vanden Hove", email = "wouter@libranet.eu" }]
+maintainers = [{ name = "Wouter Vanden Hove", email = "wouter@libranet.eu" }]
 keywords = ["libranet", "demo", "gitlab", "docker", "flask"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
     "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development",
     "Typing :: Typed",
 ]
-packages = [{ include = "libranet_flask", from = "src" }]
+dependencies = [
+    "autoread-dotenv>=1.0.3",
+    "cyclopts>=3.24",
+    "flask>=3.1.3",
+    "flask-cors>=6.0.2",
+    "httpclient-logging>=1.0",
+    "httpx>=0.28.1",
+    "jinja2>=3.1.6",
+    "libranet-logging>=1.5",
+    "python-dateutil>=2.9",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.12.0",
+]
+[dependency-groups]
+dev = [
+    "pylint>=3.1.0",
+    "ruff>=0.8.6",
+]
+deployment = [
+    "gunicorn>=25.1.0",
+    "hypercorn>=0.18.0",
+    "supervisor>=4.3.0",
+    "uvicorn>=0.41.0",
+    "waitress>=3.0.2",
+]
+docs = [
+    "docutils!=0.21",  # Work-around for https://github.com/pypi/warehouse/issues/15749
+    "markupsafe>=2.1",
+    "mdformat>=0.7",
+    "mdformat-gfm>=0.3",
+    "mdformat-frontmatter>=2.0",
+    "mdformat-tables>=1.0",
+    "myst-parser>=3.0",
+    "sphinx>=7.1",
+    "sphinx-autoapi>=3.3",
+    "sphinx-rtd-theme>=3.0",
+]
+ipython = [
+    "ipdb>=0.13",
+    "ipython>=8.0",
+    "requests>=2.3", # demo-function
+    "rich>=13.9",
+]
+jupyter = [
+    "ipykernel>=6.0",
+]
+packaging = [
+    "pyroma>=4.2",
+]
+pre-commit = [
+    "pre-commit>=3.5",  # 3.5 still supports python3.8
+    "pre-commit-hooks>=5.0.0",
+    "prek>=0.2.28",
+]
+profiling = [
+    "gprof2dot>=2022.7",
+    "importtime-waterfall>=1.0",
+    "pyinstrument>=4.4",
+    "tuna>=0.5",
+]
+security = [
+    "bandit>=1.7",
+    # bandit = { extras = ["toml"], version = ">=1.7" }
+    "safety>=2.3",
+]
+testing = [
+    "mutmut>=3.3",
+    "pytest>=8.1",
+    "pytest-clarity>=1.0",
+    "pytest-cov>=5.0.0",
+    "pytest-dotenv>=0.5",
+    "pytest-freezer>=0.4.9",
+    "pytest-mock>=3.15",
+    "pytest-xdist==3.8.0",
+]
+typing = [
+    "lxml>=4.9",
+    # lxml = { version = ">=4.9", allow-prereleases = false } # mypy coverage-report
+    "mypy>=1.14",
+    "ty>=0.0.1a17",
+    "typeguard>=2.13",
+    "types-cachetools>=6.2.0.20251022",
+    "types-python-dateutil>=2.8",
+    "types-requests>=2.28",
+    "types-toml>=0.10",
+]
+webtesting = [
+    "httpie>=3.2",
+    "locust>=2.11"
+]
 
 
-[tool.poetry.dependencies]
-python = ">=3.10.0,<4.0"
-autoread-dotenv = ">=0.0"
-flask = ">=2.1"
-flask-cors = ">=3.0"
-jinja2 = ">=3.1.2"
-libranet-logging = ">=0.0"
-httpclient-logging = ">=1.0"
-httpx = ">=0.24.0"
-
-
-
-[tool.poetry.group.deploy.dependencies]
-gunicorn = ">=20.1"
-supervisor = ">=4.2"
-uvicorn = ">=0.21"
-waitress = ">=2.1"
-
-[tool.poetry.group.dist.dependencies]
-pyroma = ">=4.2"
-twine = ">=4.0"
-
-[tool.poetry.group.docs.dependencies]
-autoapi = ">=2.0"
-recommonmark = ">=0.7"
-Sphinx = ">=4.4"
-sphinx-autoapi = ">=1.8"
-sphinx-markdown-tables = ">=0.0"
-sphinx-rtd-theme = { version = ">=1.2.0rc3", allow-prereleases = true }
-
-[tool.poetry.group.ipython.dependencies]
-ipdb = ">=0.13"
-ipython = ">=8.11"
-
-[tool.poetry.group.lint.dependencies]
-black = ">=22.1"
-flake8 = ">=4.0"
-flake8-pyproject = ">=1.2"
-isort = ">=5.10"
-pre-commit = ">=2.14"
-pre-commit-hooks = ">=4.1"
-pylint = ">=2.12"
-ruff = ">=0.0"
-
-[tool.poetry.group.profiling.dependencies]
-importtime-waterfall = ">=1.0"
-tuna = ">=0.5"
-
-[tool.poetry.group.security.dependencies]
-bandit = { extras = ["toml"], version = ">=1.7" }
-
-[tool.poetry.group.testing.dependencies]
-coverage = ">=7.2"
-pytest = ">=7.0"
-pytest-cov = ">=3.0"
-# pytest-freezegun = ">=0.4"  # superseded by pytest-freezer
-pytest-freezer = ">=0.4"
-pytest-mock = ">=3.10"
-
-[tool.poetry.group.typing.dependencies]
-lxml = { version = ">=4.9", optional = true, allow-prereleases = false } # mypy coverage-report
-mypy = ">=0.9"
-types-cachetools = ">=5.3.0"
-types-python-dateutil = ">=2.8"
-types-requests = ">=2.28"
-
-
-[tool.poetry.scripts]
-demo-flask = "libranet_flask.cli:hello"
-
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/libranet/libranet-flask/issues"
-
-[tool.poetry.plugins."sitecustomize"]
+# https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#advanced-plugins
+# https://github.com/Darsstar/sitecustomize-entrypoints/blob/main/src/sitecustomize/__init__.py
+[project.entry-points.sitecustomize]
 yaml_add_constructor_env = "libranet_logging.yaml:add_constructor"
 
+[project.scripts]
+libranet-flask = "libranet_flask.cli:app"
+demo-flask = "libranet_flask.cli.flask:hello"
 
-[tool.poetry-dynamic-versioning]
-# cfr https://github.com/mtkennerly/poetry-dynamic-versioning
-enable = true
-vcs = "git"
-style = "semver"
-
-
-[tool.poetry-dynamic-versioning.substitution]
-files = ["src/*/__init__.py", "src/*/__version__.py", "docs/changes.rst"]
+[project.urls]
+homepage = "https://github.com/libranet/libranet-flask"
+repository = "https://github.com/libranet/libranet-flask"
+"Changelog" = "https://github.com/libranet/libranet-flask/docs/changes.md"
+"Issues" = "https://github.com/libranet/libranet-flask/issues"
+"Releases" = "https://github.com/libranet/libranet-flask/releases"
+documentation = "https://github.com/libranet/libranet-flask"
 
 
 [tool.pylint.format]
+# https://pylint.pycqa.org/en/stable/user_guide
 max-line-length = 120
 good-names = [
-    "i",  # counter in loop
-    "ok", # status
-    "ts", # timestamp or timeseries object
+    "foo", # dummy variable
+    "i",   # counter in loop
+    "ok",  # status
 ]
 
 [tool.pylint.messages_control]
@@ -221,49 +238,117 @@ disable = [
 ]
 
 
-[tool.pyright]
-# VSCode will log an error if this section is missing
-# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-include = ["src", "tests"]
-
-
 [tool.pytest.ini_options]
-addopts = "--junit-xml='var/coverage/pytest.xml'" # the junit-report is used to report coverage in gitlab
+# Settings reference: https://docs.pytest.org/en/stable/reference/customize.html
 cache_dir = "var/cache/pytest"
-filterwarnings = [
-    # "ignore:Coverage disabled via --no-cov switch!:pytest.PytestWarning:pytest_cov.plugin",
-]
-log_cli = false # enable to show log-output
+log_cli = false  # enable to show log-output
 log_cli_level = "NOTSET"
+filterwarnings = []
 markers = ["unit", "integration"]
-testpaths = ["tests"]
-
-
-[tool.tox]
-# see https://tox.wiki/en/3.5.0/example/basic.html#pyproject-toml-tox-legacy-ini
-legacy_tox_ini = """
-[tox]
-envlist = py{39,310,311}
-# envlist = [py39, py310, py311]
-isolated_build = True
-toxworkdir = var/cache/tox
-
-[testenv]
-allowlist_externals =
-    make
-    poetry
-skip_install = true
-commands =
-    make install
-    pytest --pdb --exitfirst
-"""
+pythonpath = ["tests"]  # add to sys.path to make _helpers importable
+testpaths = ["tests"]  # search for test-files
 
 
 [tool.ruff]
-cache-dir = "var/cache/ruff"
+# Settings reference: https://docs.astral.sh/ruff/configuration/
+cache-dir = "var/cache/ruff" # relative to project_root
+fix = true
 line-length = 120
+target-version = "py313"
 
-# [tool.twine]
-# sign = "yes"
-# distributions = "dist/wheel/"
-# repository = "..."
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "COM812",  # conflicts with ruff format
+    "ERA001",  # found commented code
+    "G004",    # logging statement uses f-string
+    # D203 conflicts withs D211 (no blank lines allowed before class docstring)
+    "D203",    # blank line required before class docstring
+    # D212 (should start at the first line) conflicts with D213
+    "D213",    # multi-line docstring summary should start at the second line
+    "T201",    # print statement found
+]
+
+[tool.ruff.lint.flake8-annotations]
+allow-star-arg-any = true
+
+[tool.ruff.lint.isort]
+# Settings reference: https://docs.astral.sh/ruff/settings/#lintisort
+
+# https://docs.astral.sh/ruff/settings/#lintisort
+# combine-as-imports = true
+combine-as-imports = false
+force-single-line = false
+force-sort-within-sections = false  # sort straight-style imports before from-style imports
+from-first = false
+known-third-party = []
+known-first-party = ["libranet_flask"]
+known-local-folder = ["_helpers"]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/**" = [
+    "INP001",  # docs-dir should not be a python-package
+    ]
+"etc/**" = [
+    "ANN001",  # missing type annotation
+    "D103",    # missing docstring in public function
+    "INP001",  # tests-dir should not be a python-package
+    "PLC0415", # 'import' should be at top-level of file
+    ]
+"tests/**" = [
+    "ANN",     # missing type annotation
+    "D103",    # missing docstring in public function
+    "INP001",  # tests-dir should not be a python-package
+    "PLC0415", # 'import' should be at top-level of file
+    "S101",    # use of `assert` detected
+    ]
+
+
+[tool.ty]
+# https://docs.astral.sh/ty/reference/configuration/
+
+[tool.ty.analysis]
+# Disable support for `type: ignore` comments
+respect-type-ignore-comments = true
+
+[tool.ty.environment]
+# extra-paths = ["docs/"]
+
+[tool.ty.rules]
+possibly-unresolved-reference = "warn"
+division-by-zero = "ignore"
+
+[tool.ty.src]
+include = [
+    "src",
+    "tests",
+]
+
+
+[tool.uv]
+# Settings reference: https://docs.astral.sh/uv/reference/settings/
+keyring-provider = "subprocess"
+managed = true
+package = true
+default-groups = "all"
+# default-groups = [  # avoids typing 'uv sync --all-groups'
+    # "dev",
+    # "ipython",
+    # "jupyter",
+    # "pre-commit",
+    # "testing",
+    # "typing",
+# ]
+
+
+# [[tool.uv.index]]
+# Settings reference: https://docs.astral.sh/uv/reference/settings/#index
+
+[tool.uv.sources]
+# Settings reference: https://docs.astral.sh/uv/reference/settings/#sources
+# foo = { workspace = true }
+
+# [tool.uv.workspace]
+# Settings reference: https://docs.astral.sh/uv/reference/settings/#workspace
+# members = ["packages/*"]
+

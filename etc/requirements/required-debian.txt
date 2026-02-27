@@ -1,0 +1,4 @@
+# Debian / Ubuntu
+# Install the following system packages to run the application.
+#
+# apt install <package>

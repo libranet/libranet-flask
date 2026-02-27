@@ -14,11 +14,12 @@ so you can control the execution order of files with a prefix, e.g.::
 return-statements are not allowed.
 
 """
+
 print(f"\nRunning {__file__}")
 
 import logging
-import os  # noqa
-import sys  # noqa
+import os  # noqa: F401
+import sys  # noqa: F401
 
 import libranet_logging
 

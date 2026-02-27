@@ -1,1 +1,6 @@
-"""_helpers.__init__."""
+"""_helpers."""
+
+
+def foo() -> str:
+    """Foo function."""
+    return "foo"

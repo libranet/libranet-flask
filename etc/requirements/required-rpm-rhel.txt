@@ -1,0 +1,4 @@
+# Centos / AlmaLinux / Rocky Linux
+# Install the following system packages to run the application.
+#
+# dnf install <package>
