@@ -6,7 +6,7 @@
 #  - https://securitylab.github.com/resources/github-actions-new-patterns-and-mitigations
 
 
-name: Auto Merge Dependabot
+name: Auto-merge Dependabot
 
 on:
   pull_request:
