@@ -6,7 +6,7 @@
 #  - https://securitylab.github.com/resources/github-actions-new-patterns-and-mitigations
 
 
-name: Auto-merge Dependabot
+name: Auto Merge Dependabot
 
 on:
   pull_request:
@@ -23,9 +23,7 @@ jobs:
     timeout-minutes: 5
 
     # Only run for Dependabot PRs - security: prevent running on PRs from forks or other actors
-    # Use pull_request.user.login (PR author) instead of actor, so auto-merge still works
-    # when a human manually updates the branch with `gh pr update-branch`.
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    if: github.actor == 'dependabot[bot]'
 
     steps:
 
