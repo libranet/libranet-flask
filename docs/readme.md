@@ -10,21 +10,21 @@ serving via gunicorn and managed by supervisord.
 ```
 cd <your-projects-dir>
 git clone https://github.com/libranet/libranet-flask
-make install
+just install
 ```
 
 ## Running Flask
 
-Start flask-developmenet-server in foreground:
+Start flask-development-server in foreground:
 
 ```
-make flask-run
+just flask-run
 ```
 
 Start gunicorn-server in foreground:
 
 ```
-make gunicorn-run
+just gunicorn-run
 ```
 
 ## Running pytest
@@ -32,5 +32,5 @@ make gunicorn-run
 Run the unittests with pytest:
 
 ```
-make pytest
+just pytest
 ```

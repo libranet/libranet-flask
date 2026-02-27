@@ -37,6 +37,7 @@ import? '.just/bandit.justfile'
 import? '.just/dir-structure.justfile'
 import? '.just/dotenv.justfile'
 import? '.just/flask.justfile'
+import? '.just/gunicorn.justfile'
 import? '.just/ipython.justfile'
 import? '.just/just.justfile'
 import? '.just/mdformat.justfile'
@@ -56,6 +57,7 @@ import? '.just/supervisord.justfile'
 import? '.just/ty.justfile'
 import? '.just/ubuntu.justfile'
 import? '.just/uv.justfile'
+import? '.just/uvicorn.justfile'
 
 
 # Display all tasks (default recipe)
