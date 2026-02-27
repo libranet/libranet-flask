@@ -90,6 +90,30 @@ formatters:
             ERROR: red
             CRITICAL: purple
 
+    console_http: # suited for black background
+        "()": "libranet_flask.formatter.HttpFormatter"
+        datefmt: "%Y/%m/%d %H:%M:%S"
+        format: "{asctime} - {name} - {levelname:<7} - {message}"
+        style: "{"
+
+    console_color_http: # suited for black background
+        "()": "libranet_flask.formatter.ColorHttpFormatter"
+        datefmt: "%Y/%m/%d %H:%M:%S"
+        format: "{log_color}{asctime} - {name} - {levelname:<7} - {message}{reset}"
+        reset: True
+        style: "{"
+        log_colors:
+            # cfr. https://github.com/borntyping/python-colorlog
+            # supported colors: blue|cyan|green|yellow|red|purple|white|black
+            # supported prefixes: "bold_" and "bg_"
+            # <LOGLEVEL>: <foreground-color>,<background-color>
+            # comma is the separator, but no extra spaces allowed
+            DEBUG: bold_cyan # bold_cyan,bg_white
+            INFO: bold_green
+            WARNING: yellow
+            ERROR: red
+            CRITICAL: purple
+
     uvicorn_default: # see uvicorn/config.py
         "()": "uvicorn.logging.DefaultFormatter"
         datefmt: "%Y-%m-%d %H:%M:%S"
@@ -201,10 +225,10 @@ loggers:
     http.client:
         level: !env LOGLEVEL_HTTP_CLIENT, NOTSET
 
-    httplogger:
-        level: !env LOGLEVEL_HTTPLOGGER, NOTSET
-        handlers:
-            - console_http
+    # httplogger:
+    #     level: !env LOGLEVEL_HTTPLOGGER, NOTSET
+    #     handlers:
+    #         - console_http
 
     httpcore:
         level: !env LOGLEVEL_HTTPCORE, NOTSET
