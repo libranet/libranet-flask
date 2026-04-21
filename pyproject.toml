@@ -188,7 +188,7 @@ testing = [
     "pytest-xdist==3.8.0",
 ]
 typing = [
-    "lxml>=4.9",
+    "lxml>=6.1.0",
     # lxml = { version = ">=4.9", allow-prereleases = false } # mypy coverage-report
     "mypy>=1.14",
     "ty>=0.0.1a17",
