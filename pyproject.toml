@@ -134,7 +134,7 @@ deployment = [
     "gunicorn>=25.1.0",
     "hypercorn>=0.18.0",
     "supervisor>=4.3.0",
-    "uvicorn>=0.41.0",
+    "uvicorn>=0.46.0",
     "waitress>=3.0.2",
 ]
 docs = [
