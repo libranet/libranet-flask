@@ -122,7 +122,7 @@ dependencies = [
     "jinja2>=3.1.6",
     "libranet-logging>=1.5",
     "python-dateutil>=2.9",
-    "pydantic>=2.9",
+    "pydantic>=2.13.3",
     "pydantic-settings>=2.14.0",
 ]
 [dependency-groups]
