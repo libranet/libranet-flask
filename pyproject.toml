@@ -128,7 +128,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pylint>=3.1.0",
-    "ruff>=0.8.6",
+    "ruff>=0.15.12",
 ]
 deployment = [
     "gunicorn>=25.1.0",
