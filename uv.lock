@@ -1312,7 +1312,7 @@ profiling = [
     { name = "gprof2dot", specifier = ">=2022.7" },
     { name = "importtime-waterfall", specifier = ">=1.0" },
     { name = "pyinstrument", specifier = ">=4.4" },
-    { name = "tuna", specifier = ">=0.5" },
+    { name = "tuna", specifier = ">=0.5.13" },
 ]
 security = [
     { name = "bandit", specifier = ">=1.7" },
@@ -3221,11 +3221,11 @@ wheels = [
 
 [[package]]
 name = "tuna"
-version = "0.5.11"
+version = "0.5.13"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/88/fb/5bf0865b2fdb44c0c62af24e77b5fe1bcfae4282b982a954fe7984587595/tuna-0.5.11.tar.gz", hash = "sha256:d47f3e39e80af961c8df016ac97d1643c3c60b5eb451299da0ab5fe411d8866c", size = 150600, upload-time = "2021-12-18T22:11:19.551Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d4/36/fe000c9d092f83c3092241f264957ff8b2777c91cdf9077fd3716b6385a4/tuna-0.5.13.tar.gz", hash = "sha256:2d2e69992d2030097be550a662815cad150218e7a42b732d37e27de4d745939c", size = 162159, upload-time = "2026-04-12T08:43:09.578Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d6/07/c115a27adb5228bdf78d0c2366637c5b1630427f879c674f7bab4e6eb637/tuna-0.5.11-py3-none-any.whl", hash = "sha256:ab352a6d836014ace585ecd882148f1f7c68be9ea4bf9e9298b7127594dab2ef", size = 149682, upload-time = "2021-12-18T22:11:16.716Z" },
+    { url = "https://files.pythonhosted.org/packages/4f/e2/7bbdeeba940960fc97470ca8cda5112d72663d581345112a4502e9edd5f4/tuna-0.5.13-py3-none-any.whl", hash = "sha256:4220198306c8dc0ca5884b9dd42d2df881189f2b44f35aea9725f4f5f7bcea77", size = 160225, upload-time = "2026-04-12T08:43:07.913Z" },
 ]
 
 [[package]]

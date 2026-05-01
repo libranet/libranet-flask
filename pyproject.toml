@@ -170,7 +170,7 @@ profiling = [
     "gprof2dot>=2022.7",
     "importtime-waterfall>=1.0",
     "pyinstrument>=4.4",
-    "tuna>=0.5",
+    "tuna>=0.5.13",
 ]
 security = [
     "bandit>=1.7",
