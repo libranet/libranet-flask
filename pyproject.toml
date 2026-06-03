@@ -164,7 +164,7 @@ packaging = [
 pre-commit = [
     "pre-commit>=4.6.0",  # 3.5 still supports python3.8
     "pre-commit-hooks>=5.0.0",
-    "prek>=0.3.11",
+    "prek>=0.4.3",
 ]
 profiling = [
     "gprof2dot>=2022.7",
