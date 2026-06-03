@@ -190,7 +190,7 @@ testing = [
 typing = [
     "lxml>=6.1.1",
     # lxml = { version = ">=4.9", allow-prereleases = false } # mypy coverage-report
-    "mypy>=1.20.2",
+    "mypy>=2.1.0",
     "ty>=0.0.42",
     "typeguard>=4.5.2",
     "types-cachetools>=6.2.0.20260408",
