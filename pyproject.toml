@@ -196,7 +196,7 @@ typing = [
     "types-cachetools>=6.2.0.20260408",
     "types-python-dateutil>=2.9.0.20260408",
     "types-requests>=2.33.0.20260408",
-    "types-toml>=0.10.8.20260408",
+    "types-toml>=0.10.8.20260518",
 ]
 webtesting = [
     "httpie>=3.2",
