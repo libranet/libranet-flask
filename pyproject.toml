@@ -123,7 +123,7 @@ dependencies = [
     "libranet-logging>=1.5",
     "python-dateutil>=2.9",
     "pydantic>=2.13.4",
-    "pydantic-settings>=2.14.1",
+    "pydantic-settings>=2.14.2",
 ]
 [dependency-groups]
 dev = [
