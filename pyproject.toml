@@ -178,7 +178,7 @@ security = [
     "safety>=3.8.1",
 ]
 testing = [
-    "mutmut>=3.3",
+    "mutmut>=3.6.0",
     "pytest>=9.1.1",
     "pytest-clarity>=1.0",
     "pytest-cov>=5.0.0",
