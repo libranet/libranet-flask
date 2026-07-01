@@ -200,7 +200,7 @@ typing = [
 ]
 webtesting = [
     "httpie>=3.2",
-    "locust>=2.44.1"
+    "locust>=2.44.4"
 ]
 
 
