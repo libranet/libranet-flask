@@ -156,7 +156,7 @@ ipython = [
     "rich>=13.9",
 ]
 jupyter = [
-    "ipykernel>=6.0",
+    "ipykernel>=7.3.0",
 ]
 packaging = [
     "pyroma>=4.2",
