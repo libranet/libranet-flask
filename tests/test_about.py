@@ -16,4 +16,4 @@ def test_license() -> None:
     from libranet_flask.about import license_
 
     assert isinstance(license_, str)
-    assert "Copyright" in license_
+    assert license_ == "MIT"
