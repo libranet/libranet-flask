@@ -42,6 +42,9 @@
 # exclude generated python-cache-files
 __pycache__/
 
+# exclude coverage data-file
+/.coverage
+
 # exclude toplevel var-dir
 /var
 
