@@ -1,8 +1,13 @@
 """libranet_flask.main."""
 
+from typing import TYPE_CHECKING, Any
+
 import flask
 import flask_cors
 import libranet_logging
+
+if TYPE_CHECKING:
+    import re
 
 
 def before_first_request() -> None:
@@ -37,7 +42,7 @@ def register_blueprints(app: flask.Flask) -> None:
 def register_cors(app: flask.Flask) -> None:
     """Register cors-extension."""
     cors = flask_cors.CORS()
-    resources = {"*": {"origins": "*"}}
+    resources: dict[str | re.Pattern[str], dict[str, Any]] = {"*": {"origins": "*"}}
     cors.init_app(app, resources=resources)
 
 
