@@ -160,15 +160,15 @@ wheels = [
 
 [[package]]
 name = "autoread-dotenv"
-version = "1.0.4"
+version = "1.0.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "python-dotenv" },
     { name = "sitecustomize-entrypoints" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/30/61/2e915db9863fec16782ad758c615237a2eeb4a45451c8f9aaef7b8b77bdb/autoread_dotenv-1.0.4.tar.gz", hash = "sha256:e36a271e1fb4e93dfd99cd7fc8aa9ff8347a1e1b7b7b0952aac1bf45d576309e", size = 6966, upload-time = "2026-01-18T22:52:59.237Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/52/26/6f5d3ec0f59eb24f2dad157e9c6de4be90b263600281da3a51dd82ca65f8/autoread_dotenv-1.0.6.tar.gz", hash = "sha256:3bd2a034b18f30cd1a71a5bb9feb1618f891c091b0e00907ecff14aad8a0da48", size = 9416, upload-time = "2026-08-24T11:02:20.154Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/87/14/e6faa86791cefca2451fccda672498193591c8a21ee11d48339cc99d4062/autoread_dotenv-1.0.4-py3-none-any.whl", hash = "sha256:259bf78a376094f968cd7405b5b15ec77379eeb85ddb783be03a021c4c4d89eb", size = 6746, upload-time = "2026-01-18T22:52:58.231Z" },
+    { url = "https://files.pythonhosted.org/packages/71/00/88e09a00d3362a785a4a955f99a1da7abbffa9fe7a22d5a9eea833d3e196/autoread_dotenv-1.0.6-py3-none-any.whl", hash = "sha256:0aa59b7eb329b6b97631944fbe9e224e71a8eb981f6ad59454851402778262f0", size = 9411, upload-time = "2026-08-24T11:02:19.047Z" },
 ]
 
 [[package]]
