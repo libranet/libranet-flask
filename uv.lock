@@ -1518,7 +1518,7 @@ wheels = [
 
 [[package]]
 name = "locust"
-version = "2.46.2"
+version = "2.46.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "configargparse" },
@@ -1537,9 +1537,9 @@ dependencies = [
     { name = "requests" },
     { name = "werkzeug" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/00/0b/98a381e4bbc766433af5c98ca9d56ae14949d20e2059eb4f3cc0d76c288d/locust-2.46.2.tar.gz", hash = "sha256:8792329639c5b4491c1d29458280daf80eee68e0acd5847b60f529bf092e8f08", size = 1478220, upload-time = "2026-07-24T20:06:22.118Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/77/a1/6e2e204a14048fb49fcd4ff36ef7477f9188029f791a6d9b1d0905944e6a/locust-2.46.4.tar.gz", hash = "sha256:a5a5daf041bcd807053bfd86d8062740c76530beb47a6e28a43b9701a3effab9", size = 1478486, upload-time = "2026-08-24T09:03:45.43Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/43/a2/af20eae9a1f20ca311e9c69a03beac6f934c2bb43d9711d84200b19dc21f/locust-2.46.2-py3-none-any.whl", hash = "sha256:289f50dad50c10e51b445f87b3291b3d3ba89bc46d80755d1a61e43f85270ed7", size = 1497779, upload-time = "2026-07-24T20:06:20.559Z" },
+    { url = "https://files.pythonhosted.org/packages/09/51/6bc797d57628be30b45b207e25b50a45df842e2a887e0c4ae4776a60a4d1/locust-2.46.4-py3-none-any.whl", hash = "sha256:e48402a5ae3d3a5821ec38847c282f56cee810ff445bb6f887bc2b09f86f3edf", size = 1498060, upload-time = "2026-08-24T09:03:43.57Z" },
 ]
 
 [[package]]
