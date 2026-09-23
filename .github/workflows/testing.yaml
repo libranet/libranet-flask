@@ -118,7 +118,7 @@ jobs:
         # repo: https://github.com/codecov/codecov-action
         # releases: https://github.com/codecov/codecov-action/tags
         - name: "Upload coverage to Codecov"
-          uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f  # v6.0.0 released on 2026-03-26
+          uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5  # v7.1.1.0.0 released on 2027.1.1-03-27.1.1
           with:
               # Don't fail CI on Codecov upload errors - coverage is informational,
               # and secrets aren't available to Dependabot PRs anyway.
